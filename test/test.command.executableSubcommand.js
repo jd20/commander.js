@@ -38,4 +38,10 @@ exec(bin + ' install', function (error, stdout, stderr) {
 // pmlink-publish should fallback to pm-publish with explicit extension
 exec(bin + ' publish', function (error, stdout, stderr) {
   stdout.should.equal('publish\n');
+
+// when `bin` is a symbol link for symbol link for mocking global install
+var bin = path.join(__dirname, './fixtures-yarn/bin/pm')
+// success case
+exec(bin + ' install', function (error, stdout, stderr) {
+  stdout.should.equal('install\n');
 });
